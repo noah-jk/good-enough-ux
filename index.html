@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usability Testing</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script defer src="script.js"></script>
+</head>
+<body>
+
+    <!-- Dark Background Overlay -->
+    <div id="overlay"></div>
+
+    <!-- Intro Screen Modal -->
+    <div id="intro-screen">
+        <h2>Welcome to the Usability Test</h2>
+        <p>You will be given 3 tasks to complete. After each task, you will rate the difficulty.</p>
+        <button id="start-test">Start Test</button>
+    </div>
+
+    <!-- Testing Area -->
+    <div id="testing-area" class="hidden">
+        <div id="task-container">
+            <h3>Current Task:</h3>
+            <p id="task-text"></p>
+            <button id="task-complete">Task Complete</button>
+            <button id="skip-task">Proceed Without Completing</button>
+        </div>
+
+        <!-- Website To Test -->
+        <iframe id="test-iframe" src="https://www.harvard.edu/" title="Test Website"></iframe>
+    </div>
+
+    <!-- Rating Popup -->
+    <div id="rating-popup" class="hidden">
+        <h3>Rate Task Difficulty</h3>
+        <button class="rate-btn" data-rating="Easy">Easy</button>
+        <button class="rate-btn" data-rating="Medium">Medium</button>
+        <button class="rate-btn" data-rating="Hard">Hard</button>
+    </div>
+
+    <!-- End Screen -->
+    <div id="end-screen" class="hidden">
+        <h2>Thank You for Participating!</h2>
+        <p>Your feedback is valuable for improving usability.</p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+#intro-screen, #end-screen, #rating-popup {
+    padding: 20px;
+    margin: 50px auto;
+/*    width: 50%;*/
+    background: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+}
+
+#testing-area {
+    display: flex;
+    height: 100vh;
+}
+
+#task-container {
+    width: 20%;
+    background: #f1f1f1;
+    padding: 20px;
+}
+
+#task-container p {
+    font-size: 32px;
+}
+
+iframe {
+    width: 80%;
+    height: 100%;
+    border: none;
+}
+
+button {
+    background-color: #0A79A6;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+  background-color: #333;
+}
+
+#skip-task {
+  background-color: #ccc;
+  color: #333;
+}
+
+/* Fullscreen modal styling */
+#intro-screen {
+    background: white;
+    padding: 30px;
+    width: 50%;
+    max-width: 500px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+/* Dark overlay behind modals */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+}
+
+/* Rating popup visibility */
+#rating-popup {
+    z-index: 999; /* Above overlay */
+}

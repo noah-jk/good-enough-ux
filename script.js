@@ -13,6 +13,7 @@ $(document).ready(function () {
     let results = [];         // accumulated { task, rating, duration } for each completed/skipped task
     let taskStart = null;     // timestamp (ms) when the current task began
     let taskDuration = null;  // elapsed seconds for the most recently stopped task
+    let umuxRatings = { q1: null, q2: null }; // UMUX-Lite responses (1–7 each)
 
     // --- Timer ---
 
@@ -38,14 +39,20 @@ $(document).ready(function () {
 
     // --- Task flow ---
 
-    // Advances to the next task, or triggers the summary when all tasks are done.
+    // Advances to the next task, or triggers the UMUX survey when all tasks are done.
     function showTask() {
         if (currentTaskIndex >= tasks.length) {
-            showSummary();
+            showUmux();
             return;
         }
         $("#task-text").text(tasks[currentTaskIndex]);
         startTimer();
+    }
+
+    // Hides the testing area and shows the UMUX-Lite survey screen.
+    function showUmux() {
+        $("#testing-area").hide();
+        $("#umux-screen").removeClass("hidden");
     }
 
     // Maps a SEQ rating (1–7 or "Skipped") to a CSS badge modifier class.
@@ -58,10 +65,11 @@ $(document).ready(function () {
         return "summary-badge--high";
     }
 
-    // Builds and displays the end-of-session summary table from the results array.
+    // Builds and displays the end-of-session summary from the results array,
+    // then appends the computed UMUX-Lite score below the task rows.
     function showSummary() {
-        $("#testing-area").hide();
         const $list = $("#summary-list").empty();
+
         results.forEach(function (r) {
             $list.append(
                 $("<div>").addClass("summary-row").append(
@@ -71,6 +79,17 @@ $(document).ready(function () {
                 )
             );
         });
+
+        // UMUX-Lite score: ((q1 + q2 - 2) / 12) × 100, rounded to nearest integer.
+        const umuxScore = Math.round(((umuxRatings.q1 + umuxRatings.q2 - 2) / 12) * 100);
+        $list.append(
+            $("<div>").addClass("summary-divider"),
+            $("<div>").addClass("summary-metric-row").append(
+                $("<span>").addClass("summary-task").text("Usability Score (UMUX-Lite)"),
+                $("<span>").addClass("summary-metric-value").text(umuxScore + " / 100")
+            )
+        );
+
         $("#end-screen").removeClass("hidden");
     }
 
@@ -105,5 +124,23 @@ $(document).ready(function () {
         $("#overlay").fadeOut(300);
         currentTaskIndex++;
         showTask();
+    });
+
+    // Record a UMUX-Lite response, visually select the button, and enable submit if both answered.
+    $(".umux-btn").click(function () {
+        const q = $(this).data("q");
+        const value = parseInt($(this).data("value"));
+        $(this).closest(".rate-btn-group").find(".umux-btn").removeClass("selected");
+        $(this).addClass("selected");
+        umuxRatings["q" + q] = value;
+        if (umuxRatings.q1 !== null && umuxRatings.q2 !== null) {
+            $("#umux-submit").prop("disabled", false);
+        }
+    });
+
+    // Hide the UMUX screen and show the final summary.
+    $("#umux-submit").click(function () {
+        $("#umux-screen").addClass("hidden");
+        showSummary();
     });
 });

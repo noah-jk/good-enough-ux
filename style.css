@@ -34,7 +34,7 @@ body {
 }
 
 /* Modals */
-#intro-screen, #end-screen, #rating-popup {
+#intro-screen, #end-screen, #rating-popup, #umux-screen {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -50,8 +50,85 @@ body {
     z-index: 999;
 }
 
-#end-screen {
+#end-screen, #umux-screen {
     width: 520px;
+}
+
+#umux-screen h2 {
+    margin: 0 0 28px;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    letter-spacing: -0.3px;
+}
+
+.umux-question {
+    margin-bottom: 24px;
+}
+
+.umux-question p {
+    font-size: 14px;
+    font-style: italic;
+    color: var(--color-text-primary);
+    margin: 0 0 12px;
+}
+
+.umux-btn {
+    flex: 1;
+    padding: 10px 4px;
+    background: transparent;
+    color: var(--color-text-primary);
+    border-color: var(--color-border-input);
+    text-align: center;
+}
+
+.umux-btn:hover {
+    background: var(--color-text-primary);
+    color: var(--color-surface);
+    border-color: var(--color-text-primary);
+    opacity: 1;
+}
+
+.umux-btn.selected {
+    background: var(--color-text-primary);
+    color: var(--color-surface);
+    border-color: var(--color-text-primary);
+}
+
+#umux-submit {
+    width: 100%;
+    background: var(--color-action);
+    border-color: transparent;
+    margin-top: 8px;
+}
+
+#umux-submit:hover {
+    background: var(--color-action-hover);
+    opacity: 1;
+}
+
+#umux-submit:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.summary-divider {
+    border-top: 1px solid var(--color-border);
+    margin: 8px 0;
+}
+
+.summary-metric-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+}
+
+.summary-metric-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    white-space: nowrap;
 }
 
 #intro-screen h2, #end-screen h2 {

@@ -15,15 +15,22 @@ $(document).ready(function () {
         $("#task-text").text(tasks[currentTaskIndex]);
     }
 
+    function getBadgeClass(rating) {
+        if (rating === "Skipped") return "summary-badge--skipped";
+        const score = parseInt(rating);
+        if (score <= 2) return "summary-badge--low";
+        if (score <= 4) return "summary-badge--mid";
+        return "summary-badge--high";
+    }
+
     function showSummary() {
         $("#testing-area").hide();
         const $list = $("#summary-list").empty();
         results.forEach(function (r) {
-            const badgeClass = "summary-badge--" + r.rating.toLowerCase();
             $list.append(
                 $("<div>").addClass("summary-row").append(
                     $("<span>").addClass("summary-task").text(r.task),
-                    $("<span>").addClass("summary-badge " + badgeClass).text(r.rating)
+                    $("<span>").addClass("summary-badge " + getBadgeClass(r.rating)).text(r.rating)
                 )
             );
         });

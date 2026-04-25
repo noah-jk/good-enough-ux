@@ -43,11 +43,21 @@
 
     <!-- Rating Popup -->
     <div id="rating-popup" class="hidden">
-        <h3>Rate Task Difficulty</h3>
-        <div class="rate-btn-group">
-            <button class="rate-btn" data-rating="Easy">Easy</button>
-            <button class="rate-btn" data-rating="Medium">Medium</button>
-            <button class="rate-btn" data-rating="Hard">Hard</button>
+        <h3>Overall, how difficult was this task?</h3>
+        <div class="seq-scale">
+            <div class="rate-btn-group">
+                <button class="rate-btn" data-rating="1">1</button>
+                <button class="rate-btn" data-rating="2">2</button>
+                <button class="rate-btn" data-rating="3">3</button>
+                <button class="rate-btn" data-rating="4">4</button>
+                <button class="rate-btn" data-rating="5">5</button>
+                <button class="rate-btn" data-rating="6">6</button>
+                <button class="rate-btn" data-rating="7">7</button>
+            </div>
+            <div class="seq-labels">
+                <span>Very Difficult</span>
+                <span>Very Easy</span>
+            </div>
         </div>
     </div>
 

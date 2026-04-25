@@ -104,20 +104,20 @@ body {
     white-space: nowrap;
 }
 
-.summary-badge--easy {
+.summary-badge--high {
     background: var(--color-action);
     color: var(--color-surface);
 }
 
-.summary-badge--medium {
+.summary-badge--mid {
     background: var(--color-text-primary);
     color: var(--color-surface);
+    opacity: 0.5;
 }
 
-.summary-badge--hard {
+.summary-badge--low {
     background: var(--color-text-primary);
     color: var(--color-surface);
-    opacity: 0.6;
 }
 
 .summary-badge--skipped {
@@ -126,9 +126,26 @@ body {
     border: 1px solid var(--color-border-input);
 }
 
+#rating-popup {
+    width: 480px;
+}
+
+.seq-scale {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.seq-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--color-text-secondary);
+}
+
 .rate-btn-group {
     display: flex;
-    gap: 8px;
+    gap: 6px;
 }
 
 /* Testing area */
@@ -227,9 +244,11 @@ button:hover {
 
 .rate-btn {
     flex: 1;
+    padding: 10px 4px;
     background: transparent;
     color: var(--color-text-primary);
     border-color: var(--color-border-input);
+    text-align: center;
 }
 
 .rate-btn:hover {

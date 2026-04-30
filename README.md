@@ -17,7 +17,7 @@
 ## Limitations
 
 * No ability to record or store data
-* The target site loads in an iframe, which may affect behavior on some sites
+* Some sites block iframe embedding via X-Frame-Options or CSP headers
 * No configuration screen or dashboard
 
 This is for moderated testing where you are already recording
